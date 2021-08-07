@@ -2,7 +2,7 @@
   "name": "mermaid-preview",
   "publisher": "chriskoelle",
   "description": "Add Mermaid Diagrams to Markdown Preview",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [
     "mermaid",
     "markdown",
@@ -24,7 +24,23 @@
     "markdown.previewStyles": [
       "./dist/markdown.css"
     ],
-    "markdown.markdownItPlugins": true
+    "markdown.markdownItPlugins": true,
+    "configuration": {
+      "title": "Mermaid Preview",
+      "properties": {
+        "mermaidPreview.theme": {
+          "type": "string",
+          "default": "default",
+          "enum": [
+            "dark",
+            "default",
+            "forest",
+            "neutral"
+          ],
+          "description": "Theme for Mermaid diagrams."
+        }
+      }
+    }
   },
   "devDependencies": {
     "copy-webpack-plugin": "^9.0.1",
