@@ -1,0 +1,40 @@
+{
+  "name": "mermaid-preview",
+  "publisher": "chriskoelle",
+  "description": "Add Mermaid Diagrams to Markdown Preview",
+  "version": "0.0.1",
+  "keywords": [
+    "mermaid",
+    "markdown",
+    "preview"
+  ],
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/chriskoelle/vscode-mermaid-preview.git"
+  },
+  "engines": {
+    "vscode": "^1.59.0"
+  },
+  "activationEvents": [],
+  "main": "./dist/index.js",
+  "contributes": {
+    "markdown.previewScripts": [
+      "./dist/preview.js"
+    ],
+    "markdown.previewStyles": [
+      "./dist/markdown.css"
+    ],
+    "markdown.markdownItPlugins": true
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^9.0.1",
+    "mermaid": "^8.11.4",
+    "terser-webpack-plugin": "^5.1.4",
+    "webpack": "^5.49.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "webpack-cli --mode=production"
+  }
+}

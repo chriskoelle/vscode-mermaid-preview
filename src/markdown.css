@@ -1,0 +1,6 @@
+/**
+ * Remove extra height on mermaid diagrams
+ */
+.mermaid svg {
+  height: auto;
+}
