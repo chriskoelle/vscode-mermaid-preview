@@ -1,19 +1,21 @@
 {
   "name": "mermaid-preview",
+  "displayName": "Mermaid Markdown Preview",
   "publisher": "chriskoelle",
   "description": "Add Mermaid Diagrams to Markdown Preview",
-  "version": "0.0.2",
+  "version": "0.3.0",
   "keywords": [
     "mermaid",
     "markdown",
     "preview"
   ],
+  "icon": "images/icon.png",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/chriskoelle/vscode-mermaid-preview.git"
   },
   "engines": {
-    "vscode": "^1.59.0"
+    "vscode": "^1.61.0"
   },
   "activationEvents": [],
   "main": "./dist/index.js",
@@ -38,19 +40,33 @@
             "neutral"
           ],
           "description": "Theme for Mermaid diagrams."
+        },
+        "mermaidPreview.backgroundColor": {
+          "type": "string",
+          "description": "Background color for Mermaid diagrams."
         }
       }
     }
   },
   "devDependencies": {
+    "@types/vscode": "^1.61.0",
     "copy-webpack-plugin": "^9.0.1",
-    "mermaid": "^8.11.4",
+    "mermaid": "^8.13.3",
     "terser-webpack-plugin": "^5.1.4",
     "webpack": "^5.49.0",
     "webpack-cli": "^4.7.2"
   },
   "scripts": {
     "vscode:prepublish": "npm run build",
-    "build": "webpack-cli --mode=production"
+    "build": "webpack-cli --mode=production",
+    "compile": "node ./node_modules/vscode/bin/compile -watch -p"
+  },
+  "dependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.3",
+    "babel-preset-env": "^1.7.0"
   }
 }
