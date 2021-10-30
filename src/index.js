@@ -1,41 +1,38 @@
-"use strict"
-const {commands, workspace} = require('vscode');
+'use strict';
 
-module.exports.activate = ({subscriptions}) => {
-  const mp = workspace.getConfiguration('mermaidPreview');
-  let theme = mp.get('theme');
+import { commands, workspace } from 'vscode';
 
-  /**
-   * Re-render Markdown if the Mermaid theme is changed
-   */
-  subscriptions.push(
-    workspace.onDidChangeConfiguration((e) => {
-      if (e.affectsConfiguration('mermaidPreview')) {
-        theme = workspace.getConfiguration('mermaidPreview').get('theme')
-        commands.executeCommand('markdown.preview.refresh');
-      }
-    })
-  )
+/**
+ * Wrap Mermaid code in a div with data attributes for configuration
+ */
+const mermaidIt = (code) => {
+  const config = workspace.getConfiguration('mermaidPreview');
+  const theme = config.get('theme');
+  const backgroundColor = config.get('backgroundColor');
 
-  /**
-   * Wrap code in Mermaid div and inject the theme
-   */
-  const mermaidIt = (code) =>
-  `<div class="mermaid">
-  %%{init:{'theme':'${theme}'}}%%
-  ${code}
-  </div>`;
+  return `<div class="mermaid" data-theme="${theme}" data-background-color="${backgroundColor}">${code}</div>`;
+};
+
+/**
+ * Refresh markdown preview if settings are changed
+ */
+const refreshOnConfigChange = (e) => {
+  if (e.affectsConfiguration('mermaidPreview')) {
+    console.debug('Memaid Preview Config Update');
+    commands.executeCommand('markdown.preview.refresh');
+  }
+};
+
+export const activate = ({ subscriptions }) => {
+  // subscribe to configuration changes
+  subscriptions.push(workspace.onDidChangeConfiguration(refreshOnConfigChange));
 
   return {
     extendMarkdownIt(md) {
-      const {
-        highlight
-      } = md.options;
+      const { highlight } = md.options;
       md.options.highlight = (code, lang = '') =>
-        lang.match(/\bmermaid\b/i)
-          ? mermaidIt(code)
-          : highlight(code, lang);
+        lang.match(/\bmermaid\b/i) ? mermaidIt(code) : highlight(code, lang);
       return md;
-    }
+    },
   };
 };

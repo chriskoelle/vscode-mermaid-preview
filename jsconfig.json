@@ -1,10 +1,15 @@
 {
   "compilerOptions": {
-    "checkJs": true,
-    "lib": [
-      "es6"
-    ]
-  },
+      "checkJs": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es2018",
+        "lib": [
+            "es2018",
+            "DOM"
+        ],
+        "allowSyntheticDefaultImports": true
+    },
   "exclude": [
     "node_modules"
   ]

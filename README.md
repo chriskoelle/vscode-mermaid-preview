@@ -1,6 +1,6 @@
-# Mermaid Preview
+![Mermaid Markdown Preview](images/logo.png)
 
-Add Mermaid diagrams to VS Code Markdown Preview
+Add Mermaid diagrams to VS Code Markdown Preview.
 
 ![Mermaid Diagram in VS Code Markdown Preview](images/screenshot.png)
 
@@ -45,6 +45,7 @@ C -->|Two| E[Result 2]
 
 ## Settings
 
-| Name                 | Default   | Description          |
-| -------------------- | --------- | -------------------- |
-| mermaidPreview.theme | `default` | The Mermaid-JS theme |
+| Name                           | Default   | Description                           |
+| ------------------------------ | --------- | ------------------------------------- |
+| mermaidPreview.backgroundColor |           | Background color for Mermaid diagrams |
+| mermaidPreview.theme           | `default` | The Mermaid-JS theme                  |
