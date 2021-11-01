@@ -1,4 +1,4 @@
-![Mermaid Markdown Preview](images/logo.png)
+<h1><img src="images/logo.png" width="600" alt="Mermaid Markdown Preview" style="display:block"></h1>
 
 Add Mermaid diagrams to VS Code Markdown Preview.
 
